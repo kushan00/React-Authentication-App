@@ -4,8 +4,9 @@ import "./homepage.css"
 const Homepage = ({setLoginUser}) => {
     return (
         <div className="homepage">
-            <h1>Hello Homepage</h1>
-            
+            <h1>Hello  </h1>
+            <h2>Your email is :  </h2>
+
             <div className="button" onClick={() => setLoginUser({})} >Logout</div>
         </div>
     )
