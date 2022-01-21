@@ -12,6 +12,7 @@ app.post("/login", (req, res)=> {
         if(user){
             if(password === user.password ) {
                 res.send({message: "Login Successfull", user: user})
+                
             } else {
                 res.send({ message: "Password didn't match"})
             }
