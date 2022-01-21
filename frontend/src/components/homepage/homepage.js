@@ -6,37 +6,38 @@ import { useState } from "react";
 const Homepage = ({setLoginUser}) => {
 
 
-     const [ user, setUser] = useState({
-        name: "",
-        email:"",
-        password:"",
-
-    })
-
-    const handleChange = e => {
-        const { name, value } = e.target
-        setUser({
-            ...user,
-            [name]: value
-        })
-    }
-
-    const update = () => {
-        const { name, email, password } = user
-        if( name && email && password){
-            axios.put(`http://localhost:8000/user/update/${setLoginUser._id}`, user)
-            .then( res => {
-                alert("User  Updated!")
-            })
-        } else {
-            alert("invlid input")
-        }
-        
-    }
+    const[name , setname] = useState("");
+    const[email , setemail] = useState("");
+    const[password , setpassword] = useState("");
+   
 
 
 
+    const changeOnClick = e =>{
+     
+        e.preventDefault();
 
+        const user ={
+         
+            name,
+            email,
+            password
+
+        };
+
+        setname("");
+        setemail("");
+        setpassword('');
+       
+
+        axios.put(`http://localhost:8000/user/update/${setLoginUser._id}`, user)
+        .then (res =>
+          alert("User  Updated!")
+          (res.data))
+        .catch(err =>{
+            console.log(err);
+        });
+     };
 
 
     return (
@@ -47,12 +48,19 @@ const Homepage = ({setLoginUser}) => {
 <br/><br/><br/>
 <h3>Edit your Details</h3>
 <br/><br/><br/>
-            <div className="update">
-            <input type="text" name="name" value={setLoginUser.name} placeholder="Your Name" onChange={ handleChange } required></input>
-            <input type="text" name="email" value={setLoginUser.email} placeholder="Your Email" onChange={ handleChange } required></input>
-            <input type="password"  name="password" value={setLoginUser.password} placeholder="Your Password" onChange={ handleChange } required></input>
-            <div className="button" onClick={update} >Update</div>
-            </div>
+   
+           <form onSubmit={changeOnClick} >
+           <div className="update">
+               Name:
+               <input type="text"  onChange={e => setname(e.target.value)} placeholder={setLoginUser.name} required/><br/><br/>
+               Email:
+               <input type="text" onChange={e => setemail(e.target.value)} placeholder={setLoginUser.email} required/><br/><br/>
+               Password:
+               <input type="text"  onChange={e => setpassword(e.target.value)} placeholder={setLoginUser.password} required/><br/><br/>
+               <center> <button type="submit"  className="button">Update user </button></center>
+               </div>
+           </form>
+          
         </div>
     )
 }

@@ -7,12 +7,12 @@
     height: 70vh;
     border-radius: 20px;
     box-shadow: 0 0 15px 5px grey;
-    background: rgb(252, 252, 252);
+    background: rgb(150, 255, 176);
     position: relative
 }
 
-.update > .button {
-    background: #38ff9b;
+ .button {
+    background: #48ff00;
     border: 1px solid #38ff9b;
     color: rgb(0, 0, 0);
     font-size: 1.25rem;
@@ -25,7 +25,7 @@
 
 .update {
     width: 400px;
-    background: #fff;
+    background: rgb(252, 252, 252);
     border: 1px solid #dddfe2;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     border-radius: 8px;
