@@ -4,14 +4,14 @@
     align-items: center;
     justify-content:center;
     width: 50vw;
-    height: 50vh;
+    height: 70vh;
     border-radius: 20px;
     box-shadow: 0 0 15px 5px grey;
     background: rgb(252, 252, 252);
     position: relative
 }
 
-.homepage > .button {
+.update > .button {
     background: #38ff9b;
     border: 1px solid #38ff9b;
     color: rgb(0, 0, 0);
@@ -21,4 +21,26 @@
     border-radius: 8px;
     outline: none;
     cursor: pointer;
+}
+
+.update {
+    width: 400px;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+}
+
+.update > input {
+    border-radius: 8px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    width: 92%;
+    font-size: 1rem;
 }

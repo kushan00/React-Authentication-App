@@ -1,8 +1,42 @@
 import React from "react"
 import "./homepage.css"
-
+import axios from "axios";
+import { useState } from "react";
 
 const Homepage = ({setLoginUser}) => {
+
+
+     const [ user, setUser] = useState({
+        name: "",
+        email:"",
+        password:"",
+
+    })
+
+    const handleChange = e => {
+        const { name, value } = e.target
+        setUser({
+            ...user,
+            [name]: value
+        })
+    }
+
+    const update = () => {
+        const { name, email, password } = user
+        if( name && email && password){
+            axios.put(`http://localhost:8000/user/update/${setLoginUser._id}`, user)
+            .then( res => {
+                alert("User  Updated!")
+            })
+        } else {
+            alert("invlid input")
+        }
+        
+    }
+
+
+
+
 
 
     return (
@@ -13,15 +47,12 @@ const Homepage = ({setLoginUser}) => {
 <br/><br/><br/>
 <h3>Edit your Details</h3>
 <br/><br/><br/>
-           <form >
-               Name:
-               <input type="text" value={setLoginUser.name} /><br/><br/>
-               Email:
-               <input type="text" value={setLoginUser.email} /><br/><br/>
-               Password:
-               <input type="text" value={setLoginUser.password} /><br/><br/>
-               <center><input type="submit" className="btn btn-success" value="Update"/></center>
-           </form>
+            <div className="update">
+            <input type="text" name="name" value={setLoginUser.name} placeholder="Your Name" onChange={ handleChange } required></input>
+            <input type="text" name="email" value={setLoginUser.email} placeholder="Your Email" onChange={ handleChange } required></input>
+            <input type="password"  name="password" value={setLoginUser.password} placeholder="Your Password" onChange={ handleChange } required></input>
+            <div className="button" onClick={update} >Update</div>
+            </div>
         </div>
     )
 }
