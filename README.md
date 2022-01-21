@@ -1,5 +1,5 @@
 # React-Authentication-App
 
 
-login credentials : user@gmail.com
-                    123
+login credentials :email : user@gmail.com
+                   password :  123
