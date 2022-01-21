@@ -1,6 +1,8 @@
-import express from "express"
-import cors from "cors"
-import mongoose from "mongoose"
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
 
 const app = express()
 app.use(express.json())
@@ -20,16 +22,20 @@ app.use(bodyParser.json());
 //route middleware
 app.use(user);
 
+const PORT = 8000;
+const DB_URL = 'mongodb+srv://admin:admin@user.nqcdh.mongodb.net/user?retryWrites=true&w=majority';
 
-mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
+mongoose.connect(DB_URL, {
+    
+    //type warnings
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => {
-    console.log("DB connected")
+})
+.then(()=>{
+    console.log('DB connected');
+})
+.catch((err)=> console.log('DB connect failed', err));
+
+app.listen(PORT, () => {
+    console.log(`App is running on ${PORT}`);
 });
-
-
-app.listen(9002,() => {
-    console.log("BE started at port 9002")
-});
-
