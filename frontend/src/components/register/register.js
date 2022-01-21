@@ -28,7 +28,7 @@ const Register = () => {
             axios.post("http://localhost:8000/register", user)
             .then( res => {
                 alert(res.data.message)
-                history.push("/login")
+                history("/login")
             })
         } else {
             alert("invlid input")
@@ -39,11 +39,11 @@ const Register = () => {
     return (
         <div className="register">
             {console.log("User", user)}
-            <h1>Register</h1>
-            <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange }></input>
-            <input type="text" name="email" value={user.email} placeholder="Your Email" onChange={ handleChange }></input>
-            <input type="password" name="password" value={user.password} placeholder="Your Password" onChange={ handleChange }></input>
-            <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={ handleChange }></input>
+            <h1>Register user</h1>
+            <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange } required></input>
+            <input type="text" name="email" value={user.email} placeholder="Your Email" onChange={ handleChange } required></input>
+            <input type="password" id ="password" name="password" value={user.password} placeholder="Your Password" onChange={ handleChange } required></input>
+            <input type="password" id ="reEnterPassword" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={ handleChange } required></input>
             <div className="button" onClick={register} >Register</div>
             <div>or</div>
             <div className="button" onClick={() => history("/login")}>Login</div>

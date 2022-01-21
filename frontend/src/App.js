@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Routes >
           <Route exact path="/" element={
-              user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
+              user && user._id ? <Homepage setLoginUser={user} /> : <Login setLoginUser={setLoginUser}/>
             }>
             
           </Route>
